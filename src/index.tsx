@@ -1,6 +1,5 @@
 import { FluidaUIProvider } from './wrapper';
-
 // UI Component
-import { Button } from './ui';
+import { Button, Container } from './ui';
 
-export { FluidaUIProvider, Button };
+export { FluidaUIProvider, Button, Container };
