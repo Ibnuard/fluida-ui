@@ -1,14 +1,6 @@
-import * as React from 'react';
-import { View, Text } from 'react-native';
+import { FluidaUIProvider } from './wrapper';
 
-export function multiply(a: number, b: number): Promise<number> {
-  return Promise.resolve(a * b);
-}
+// UI Component
+import { Button } from './ui';
 
-export function simpleText() {
-  return (
-    <View>
-      <Text>Simple text v1.0</Text>
-    </View>
-  );
-}
+export { FluidaUIProvider, Button };
