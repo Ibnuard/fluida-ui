@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { Button, Container } from 'fluida-ui';
+import { FluidaUIProvider } from 'fluida-ui';
+import Navigation from './Router';
 
 export default function App() {
-  const main = Container({
-    render: <Button onPress={() => console.log('HE SO YAM')}>HOHO</Button>,
-  });
-
-  return main;
+  return (
+    <FluidaUIProvider useNavigation>
+      <Navigation />
+    </FluidaUIProvider>
+  );
 }
