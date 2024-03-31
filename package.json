@@ -1,6 +1,6 @@
 {
   "name": "fluida-ui",
-  "version": "0.1.0",
+  "version": "0.1.0-local",
   "description": "create quick and simple app with react native",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
