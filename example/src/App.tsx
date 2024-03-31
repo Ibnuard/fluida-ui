@@ -1,15 +1,14 @@
 import * as React from 'react';
 
 import { StyleSheet, View, Text } from 'react-native';
-import { Button } from 'fluida-ui';
+import { Button, Container } from 'fluida-ui';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Halo</Text>
-      <Button onPress={() => console.log('HUM')}>Halo ini button</Button>
-    </View>
-  );
+  const main = Container({
+    render: <Button onPress={() => console.log('HE SO YAM')}>HOHO</Button>,
+  });
+
+  return main;
 }
 
 const styles = StyleSheet.create({
