@@ -1,6 +1,6 @@
 {
   "name": "fluida-ui",
-  "version": "0.1.0-local",
+  "version": "0.1.1-local-test",
   "description": "create quick and simple app with react native",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -155,5 +155,10 @@
         }
       ]
     ]
+  },
+  "dependencies": {
+    "react-native-paper": "^5.12.3",
+    "react-native-safe-area-context": "^4.9.0",
+    "react-native-vector-icons": "^10.0.3"
   }
 }
