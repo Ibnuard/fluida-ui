@@ -1,4 +1,6 @@
 import type { ParamListBase, RouteProp } from '@react-navigation/native';
+import type { ReactNode } from 'react';
+import type { StyleProp, TextStyle } from 'react-native';
 import type { StackAnimationTypes } from 'react-native-screens';
 
 type ScreenComponentType<
@@ -12,13 +14,39 @@ type ScreenComponentType<
   | React.ComponentType<{}>;
 
 type TRouterItem<ParamList extends ParamListBase> = {
-  name: string;
+  name: keyof ParamList;
   screen: ScreenComponentType<ParamList, keyof ParamList>;
+  title?: string;
 };
 
-type TCreateRouter = {
-  router: TRouterItem<ParamListBase>[];
+type TCreateRouter<ParamList extends ParamListBase> = {
+  router: TRouterItem<ParamList>[];
   animation?: StackAnimationTypes;
 };
 
-export type { TRouterItem, TCreateRouter };
+type TCreateBottomBar<ParamList extends ParamListBase> = {
+  router: TRouterItem<ParamList>[];
+  tabIcon?: (props: TBottomTabIcon) => ReactNode;
+  tabLabelStyle?: StyleProp<TextStyle>;
+  activeTintColor?: string;
+  inactiveTintColor?: string;
+};
+
+type TBottomTabIcon = TTabIcon & TRouteProps;
+
+type TTabIcon = {
+  focused: boolean;
+  color: string;
+  size: number;
+};
+
+type TRouteProps = {
+  route: RouteProp<ParamListBase, string>;
+};
+
+export type {
+  TRouterItem,
+  TCreateRouter,
+  TCreateBottomBar,
+  ScreenComponentType,
+};

@@ -4,21 +4,32 @@ import React from 'react';
 type TTest = {
   Home: undefined;
   Profile: undefined;
+  Nested: undefined;
+  Tab: undefined;
 };
 
 export function Home() {
   const nav = useNav<TTest>();
-  const main = Container({
-    render: <Button onPress={() => nav.navigate('Profile')}>HOM</Button>,
+  return Container({
+    render: <Button onPress={() => nav.navigate('Nested')}>HOM</Button>,
   });
+}
 
-  return main;
+export function Account() {
+  return Container({
+    render: <Button>ACC</Button>,
+  });
+}
+
+export function Nested() {
+  return Container({
+    render: <Button>Nested</Button>,
+  });
 }
 
 export function Profile() {
-  const main = Container({
-    render: <Button>PROF</Button>,
+  const nav = useNav<TTest>();
+  return Container({
+    render: <Button onPress={() => nav.navigate('Tab')}>Go to Tab</Button>,
   });
-
-  return main;
 }

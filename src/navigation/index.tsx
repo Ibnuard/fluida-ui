@@ -1,4 +1,2 @@
-import { Router } from './Stack';
-import { useNav } from './Func';
-
-export { Router, useNav };
+export * from './Navigator';
+export * from './Func';
