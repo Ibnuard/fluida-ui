@@ -1,5 +1,5 @@
 import { BottomBar, Router } from 'fluida-ui';
-import { Account, Home, Profile } from './ScreensSample';
+import { Account, Home, Profile, SampleA } from './ScreensSample';
 import { Image } from 'react-native';
 import React from 'react';
 
@@ -13,17 +13,29 @@ function NestedWithTab() {
   });
 }
 
+// Other Navigation
+function NestedAcc() {
+  return Router({
+    router: [
+      { name: 'Acc', screen: Account },
+      { name: 'SampleA', screen: SampleA },
+    ],
+  });
+}
+
 // Bottom Tab
 function BottomTabNav() {
   return BottomBar({
     router: [
-      { name: 'Acc', screen: Account, title: 'Home Account' },
+      { name: 'AccTab', screen: NestedAcc, title: 'Home Account' },
       { name: 'Acc2', screen: Account },
     ],
+    showLabel: false,
+    showTabOn: ['Acc'],
     tabIcon: ({ route }) => {
       let iconName;
 
-      if (route.name === 'Acc') {
+      if (route.name === 'AccTab') {
         iconName =
           'https://icons.veryicon.com/png/o/miscellaneous/home-icon-1/house-30.png';
       } else if (route.name === 'Acc2') {

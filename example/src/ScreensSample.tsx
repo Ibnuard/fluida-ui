@@ -6,6 +6,7 @@ type TTest = {
   Profile: undefined;
   Nested: undefined;
   Tab: undefined;
+  SampleA: undefined;
 };
 
 export function Home() {
@@ -16,8 +17,17 @@ export function Home() {
 }
 
 export function Account() {
+  const nav = useNav<TTest>();
   return Container({
-    render: <Button>ACC</Button>,
+    render: (
+      <Button onPress={() => nav.navigate('SampleA')}>Go to Sample A</Button>
+    ),
+  });
+}
+
+export function SampleA() {
+  return Container({
+    render: <Button>Sample A</Button>,
   });
 }
 

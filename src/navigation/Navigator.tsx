@@ -1,8 +1,11 @@
 import * as React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import type { TCreateBottomBar, TCreateRouter } from '../types';
+import {
+  getFocusedRouteNameFromRoute,
+  type ParamListBase,
+} from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import type { ParamListBase } from '@react-navigation/native';
 
 const Stack = createNativeStackNavigator<ParamListBase>();
 const BottomTab = createBottomTabNavigator<ParamListBase>();
@@ -43,6 +46,17 @@ function BottomBar(props: TCreateBottomBar<ParamListBase>) {
             return undefined;
           }
         },
+        lazy: props.useLazy,
+        unmountOnBlur: props.unmountOnBlur,
+        tabBarShowLabel: props.showLabel,
+        tabBarStyle: ((route) => {
+          const routeName = getFocusedRouteNameFromRoute(route) ?? '';
+          if (props.showTabOn?.includes(routeName) || !routeName) {
+            return { display: 'flex', position: 'absolute' };
+          } else {
+            return { display: 'none', position: 'absolute' };
+          }
+        })(route),
         tabBarActiveTintColor: props.activeTintColor || 'tomato',
         tabBarInactiveTintColor: props.inactiveTintColor || 'gray',
         tabBarLabelStyle: props.tabLabelStyle,
